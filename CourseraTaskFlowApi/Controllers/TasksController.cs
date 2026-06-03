@@ -37,6 +37,11 @@ namespace CourseraTaskFlowApi.Controllers
         [HttpPost]
         public ActionResult<TaskItem> CreateTask(TaskItem task)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             TaskItem createdTask = _taskService.CreateTask(task);
 
             return CreatedAtAction(
@@ -49,6 +54,11 @@ namespace CourseraTaskFlowApi.Controllers
         [HttpPut("{id}")]
         public IActionResult UpdateTask(int id, TaskItem updatedTask)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             bool isUpdated = _taskService.UpdateTask(id, updatedTask);
 
             if (!isUpdated)
@@ -56,7 +66,7 @@ namespace CourseraTaskFlowApi.Controllers
                 return NotFound();
             }
 
-            return NoContent();
+            return Ok(updatedTask);
         }
 
         [HttpDelete("{id}")]

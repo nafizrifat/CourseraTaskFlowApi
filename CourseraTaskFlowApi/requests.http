@@ -23,6 +23,17 @@ Content-Type: application/json
 
 ###
 
+POST {{TaskFlowApi_HostAddress}}/api/tasks
+Content-Type: application/json
+
+{
+  "title": "Practice CRUD Operations",
+  "description": "Test create, read, update, and delete API endpoints",
+  "isCompleted": false
+}
+
+###
+
 PUT {{TaskFlowApi_HostAddress}}/api/tasks/1
 Content-Type: application/json
 
@@ -35,4 +46,80 @@ Content-Type: application/json
 ###
 
 DELETE {{TaskFlowApi_HostAddress}}/api/tasks/1
+Accept: application/json
+
+###
+
+POST {{TaskFlowApi_HostAddress}}/api/tasks
+Content-Type: application/json
+
+{
+  "title": "",
+  "description": "This should fail because title is required.",
+  "isCompleted": false
+}
+
+###
+
+POST {{TaskFlowApi_HostAddress}}/api/tasks
+Content-Type: application/json
+
+{
+  "title": "Hi",
+  "description": "This should fail because title is less than 3 characters.",
+  "isCompleted": false
+}
+
+###
+
+POST {{TaskFlowApi_HostAddress}}/api/tasks
+Content-Type: application/json
+
+{
+  "title": "Valid Task Title",
+  "description": "This should pass because the title is valid.",
+  "isCompleted": false
+}
+
+###
+
+PUT {{TaskFlowApi_HostAddress}}/api/tasks/1
+Content-Type: application/json
+
+{
+  "title": "",
+  "description": "This update should fail because title is required.",
+  "isCompleted": true
+}
+
+###
+
+PUT {{TaskFlowApi_HostAddress}}/api/tasks/1
+Content-Type: application/json
+
+{
+  "title": "No",
+  "description": "This update should fail because title is less than 3 characters.",
+  "isCompleted": true
+}
+
+###
+
+GET {{TaskFlowApi_HostAddress}}/api/tasks/9999
+Accept: application/json
+
+###
+
+PUT {{TaskFlowApi_HostAddress}}/api/tasks/9999
+Content-Type: application/json
+
+{
+  "title": "Missing Task Update",
+  "description": "This should return NotFound because task id does not exist.",
+  "isCompleted": true
+}
+
+###
+
+DELETE {{TaskFlowApi_HostAddress}}/api/tasks/9999
 Accept: application/json
