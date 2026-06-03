@@ -1,0 +1,38 @@
+@TaskFlowApi_HostAddress = https://localhost:7230
+
+###
+
+GET {{TaskFlowApi_HostAddress}}/api/tasks
+Accept: application/json
+
+###
+
+GET {{TaskFlowApi_HostAddress}}/api/tasks/1
+Accept: application/json
+
+###
+
+POST {{TaskFlowApi_HostAddress}}/api/tasks
+Content-Type: application/json
+
+{
+  "title": "Learn ASP.NET Core Web API",
+  "description": "Create CRUD API using in-memory List",
+  "isCompleted": false
+}
+
+###
+
+PUT {{TaskFlowApi_HostAddress}}/api/tasks/1
+Content-Type: application/json
+
+{
+  "title": "Learn ASP.NET Core Web API - Updated",
+  "description": "Updated task description",
+  "isCompleted": true
+}
+
+###
+
+DELETE {{TaskFlowApi_HostAddress}}/api/tasks/1
+Accept: application/json

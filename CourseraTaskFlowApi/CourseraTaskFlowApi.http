@@ -1,0 +1,6 @@
+@CourseraTaskFlowApi_HostAddress = http://localhost:5134
+
+GET {{CourseraTaskFlowApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
